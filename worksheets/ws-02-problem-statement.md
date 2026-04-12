@@ -67,33 +67,39 @@ Masalah riset yang layak harus memenuhi 5 kriteria:
 PROBLEM STATEMENT BUILDER
 
 Domain & Konteks
-  Domain   : ____________________
-  Konteks  : ____________________
+  Domain   : Human-Computer Interaction (HCI) & Educational Technology
+  Konteks  : Proses belajar mandiri mahasiswa Ilmu Komputer UPB di era distraksi digital.
 
 System Context
-  Input       : ____________________
-  Process     : ____________________
-  Output      : ____________________
-  Outcome     : ____________________
-  Constraints : ____________________
-  Stakeholders: ____________________
+  Input       : Waktu luang mahasiswa, konten video pendek TikTok, tugas pemrograman (Workshop).
+  Process     : Konsumsi konten (scrolling), perpindahan fokus (context switching), pengerjaan tugas.
+  Output      : Durasi penggunaan aplikasi (menit), waktu penyelesaian tugas, skor fokus.
+  Outcome     :Kualitas pemahaman materi koding dan performa akademik.
+  Constraints : Algoritma TikTok yang adiktif, keterbatasan waktu dalam satu hari, deadline tugas.
+  Stakeholders: Mahasiswa Ilmu Komputer, Dosen Pengampu, Universitas Putra Bangsa.
 
 Fenomena → Problem
-  Fenomena yang diamati             : ____________________
-  Gejala (symptom) yang terukur     : ____________________
-  Masalah yang didiagnosis          : ____________________
-  Masalah riset (researchable)      : ____________________
-  Variabel yang terukur             : ____________________
+  Fenomena yang diamati             : Mahasiswa sering membuka TikTok saat sela-sela koding/belajar.
+  Gejala (symptom) yang terukur     : Tugas Workshop selesai lebih lama dari estimasi; sering terjadi "blank" saat koding.
+  Masalah yang didiagnosis          : Penurunan daya fokus (deep work) akibat stimulasi dopamin instan secara terus-menerus.
+  Masalah riset (researchable)      :Korelasi antara intensitas penggunaan TikTok (menit/hari) terhadap skor konsentrasi mahasiswa IT saat sesi belajar mandiri.
+  Variabel yang terukur             : Durasi Screen Time (menit), Skor Fokus (skala 1-10), jumlah interupsi per sesi.
 
 Problem Quality Check
-  [ ] Clarity — Apakah satu orang membaca akan paham?
-  [ ] Measurability — Apakah ada metrik kuantitatif?
-  [ ] Relevance — Apakah penting untuk domain?
-  [ ] Testability — Apakah bisa gagal?
-  [ ] Impact — Apakah ada kontribusi jika terjawab?
+  [✔] Clarity — Jelas, fokus pada satu aplikasi (TikTok) dan satu kelompok (Mahasiswa Ilmu Komputer Universitas Putra Bangsa).
+  [✔] Measurability — Bisa diukur dengan data Screen Time asli.
+  [✔] Relevance — Sangat penting karena menyangkut produktivitas mahasiswa IT.
+  [✔] Testability — Bisa gagal jika ternyata TikTok tidak berpengaruh (falsifiable).
+  [✔] Impact — Memberikan solusi manajemen waktu bagi mahasiswa.
 
 Problem Statement (1 paragraf):
-  ____________________
+  Penggunaan media sosial TikTok yang masif di kalangan mahasiswa Informatika Universitas Putra 
+  Bangsa (UPB) diduga menciptakan pola distraksi digital yang menghambat kemampuan fokus 
+  mendalam (deep work). Meskipun memberikan hiburan, stimulasi konten pendek yang terus-menerus 
+  berpotensi menurunkan daya konsentrasi saat pengerjaan tugas logika pemrograman yang kompleks. 
+  Riset ini bertujuan untuk membuktikan secara kuantitatif apakah durasi penggunaan TikTok yang 
+  terekam pada log Screen Time memiliki korelasi negatif terhadap skor fokus belajar mandiri, 
+  sebagai dasar untuk merumuskan strategi literasi digital yang lebih efektif bagi mahasiswa.
 ```
 
 ---
@@ -106,13 +112,13 @@ Pilih satu topik di bidang TI yang diminati. Transformasikan melalui 5 tahap Pro
 
 | Tahap | Hasil |
 |-------|-------|
-| Reality | *Contoh: Aplikasi e-commerce sering ditinggalkan saat checkout* |
-| Observed Issue (Symptom) | *Contoh: Bounce rate checkout 68%* |
-| Diagnosed Problem (Root Cause) | |
-| Researchable Problem | |
-| Measurable Variable | |
+| Reality | Mahasiswa sering terdistraksi smartphone saat sedang belajar mandiri. |
+| Observed Issue (Symptom) | Waktu pengerjaan tugas Workshop molor dan mahasiswa merasa cepat lelah secara mental. |
+| Diagnosed Problem (Root Cause) | Context switching yang terlalu sering antara konten hiburan TikTok dan logika koding. |
+| Researchable Problem |Pengaruh durasi harian TikTok terhadap tingkat atensi mahasiswa Informatika UPB. |
+| Measurable Variable | Durasi harian (menit), Skor Atensi (skala), dan Frekuensi buka aplikasi.|
 
-**Apakah terjebak solution-first thinking?** [ ] Ya / [ ] Tidak
+**Apakah terjebak solution-first thinking?** [ ] Ya / [✔] Tidak
 > Jika ya, kembali ke tahap mana? ________________________
 
 ---
@@ -123,14 +129,14 @@ Gambarkan konteks sistem dari masalah riset di Latihan 1.
 
 | Komponen | Deskripsi |
 |----------|----------|
-| Input | *Contoh: Request HTTP dari browser pengguna* |
-| Process | |
-| Output | |
-| Outcome | |
-| Constraints | |
-| Stakeholders | |
+| Input | Notifikasi TikTok, durasi waktu luang, tugas pemrograman dari dosen. |
+| Process | Aktivitas scrolling video (konsumsi konten) vs Aktivitas berpikir logis (koding). |
+| Output | Data statistik waktu layar (Screen Time) dan hasil penilaian tugas (kuantitas). |
+| Outcome | Tingkat penguasaan kompetensi Informatika dan indeks fokus mahasiswa. |
+| Constraints | Algoritma For You Page (FYP) yang memicu adiksi, batas kuota internet, durasi tidur. |
+| Stakeholders | Mahasiswa (objek), Dosen (evaluator), dan Kampus UPB (penjamin mutu). |
 
-**Komponen mana yang paling relevan dengan masalah riset?** _______________
+**Komponen mana yang paling relevan dengan masalah riset?** Process (Perpindahan atensi dari hiburan ke koding).
 
 ---
 
@@ -140,17 +146,17 @@ Evaluasi problem statement yang sudah dibuat menggunakan 5 kriteria.
 
 | Kriteria | Skor (1-5) | Justifikasi |
 |----------|-----------|-------------|
-| Clarity | *Contoh: 4 — cukup jelas tapi perlu spesifikasi dataset* | |
-| Measurability | | |
-| Relevance | | |
-| Testability | | |
-| Impact | | |
+| Clarity | 5 | Sangat spesifik menyebut subjek (Mhs IT) dan objek (TikTok). |
+| Measurability | 5 | Menggunakan data objektif dari log sistem (Screen Time). |
+| Relevance | 5 | Distraksi digital adalah hambatan utama belajar di bidang IT saat ini. |
+| Testability | 4 | Bisa diuji dengan analisis korelasi, namun butuh kejujuran responden. |
+| Impact | 4 | Bermanfaat untuk memperbaiki pola belajar mahasiswa angkatan 24. |
 
-**Skor total:** _____ / 25
+**Skor total:** 23 / 25
 
 **Problem statement versi final (1 paragraf):**
-> ___________________________________________________
-> ___________________________________________________
+> Riset ini mengkaji fenomena penurunan fokus belajar pada mahasiswa Ilmu Komputer Universitas Putra Bangsa (UPB) yang diakibatkan oleh penggunaan aplikasi TikTok secara intensif. Dengan memanfaatkan data log Screen Time dan penilaian mandiri terhadap tingkat konsentrasi, penelitian ini bertujuan untuk mengukur hubungan kausal antara durasi paparan konten video pendek dengan hambatan dalam melakukan deep work saat pengerjaan tugas pemrograman. Hasil riset ini diharapkan dapat menjadi rujukan ilmiah dalam pembentukan kebijakan literasi digital dan manajemen waktu bagi mahasiswa di lingkungan UPB.
+
 
 ---
 
@@ -159,5 +165,5 @@ Evaluasi problem statement yang sudah dibuat menggunakan 5 kriteria.
 > Bandingkan "masalah" yang biasa ditemui saat coding (bug, error) dengan masalah riset. Apa perbedaan fundamental dalam cara mendefinisikan dan mendekati keduanya?
 
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+> Perbedaan fundamentalnya terletak pada tujuan akhir. Saat coding, masalah (bug/error) didefinisikan sebagai "sesuatu yang rusak dan harus diperbaiki" agar sistem jalan (solve). Pendekatannya teknis dan solutif. Sedangkan dalam riset, masalah didefinisikan sebagai "celah pengetahuan" (gap) yang harus dipahami dan dibuktikan kebenarannya melalui bukti ilmiah (understand & prove). Jika bug harus dihilangkan, kegagalan dalam hipotesis riset (hasil negatif) tetap dianggap sebagai kontribusi pengetahuan yang valid asalkan prosesnya sistematis.
+
