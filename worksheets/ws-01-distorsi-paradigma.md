@@ -90,8 +90,7 @@ Pilih satu paper riset di bidang TI yang mengklaim "metode X meningkatkan perfor
 | Data → Processing | Data yang diperoleh mencakup makna, nilai, dan persepsi yang hidup dalam kelompok yang diteliti | Information Overload: Data kualitatif yang sangat luas dan mendalam  bisa membuat proses penyaringan informasi menjadi sulit, sehingga ada risiko hanya data yang mendukung argumen peneliti yang diproses. |
 | Processing → Analysis | Menganalisis tingkat penggunaan (3-6 jam per hari) dan dampaknya terhadap motivasi serta perilaku belajar | Confirmation Bias: Peneliti mungkin cenderung mencari bukti dampak negatif (seperti distraksi) karena intensitas penggunaan yang tinggi. |
 | Analysis → Inference |Menyimpulkan bahwa penggunaan berlebihan menimbulkan distraksi dan menurunkan prestasi akademik. | Causal Oversimplification: Penurunan prestasi akademik mungkin dipengaruhi faktor lain di luar media sosial, namun dalam analisis ini fokus utama hanya pada pola penggunaan platform digital. |
-| Inference → Knowledge | 
-Klaim bahwa pengaruh media sosial sangat bergantung pada pola penggunaan: produktif jika diarahkan, merugikan jika tanpa kontrol. | Idealized Knowledge: Kesimpulan ini bersifat normatif/teoretis ; kenyataannya, kontrol diri Gen Z terhadap notifikasi dan algoritma TikTok/Instagram sangat sulit dilakukan secara konsisten. |
+| Inference → Knowledge | Klaim bahwa pengaruh media sosial sangat bergantung pada pola penggunaan: produktif jika diarahkan, merugikan jika tanpa kontrol. | Idealized Knowledge: Kesimpulan ini bersifat normatif/teoretis ; kenyataannya, kontrol diri Gen Z terhadap notifikasi dan algoritma TikTok/Instagram sangat sulit dilakukan secara konsisten. |
 
 **Distorsi paling besar di tahap:** Reality → Data
 **Dua distorsi spesifik yang teridentifikasi:**
