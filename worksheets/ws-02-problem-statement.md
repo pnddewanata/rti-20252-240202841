@@ -71,35 +71,36 @@ Domain & Konteks
   Konteks  : Proses belajar mandiri mahasiswa Ilmu Komputer UPB di era distraksi digital.
 
 System Context
-  Input       : Waktu luang mahasiswa, konten video pendek TikTok, tugas pemrograman (Workshop).
-  Process     : Konsumsi konten (scrolling), perpindahan fokus (context switching), pengerjaan tugas.
-  Output      : Durasi penggunaan aplikasi (menit), waktu penyelesaian tugas, skor fokus.
-  Outcome     :Kualitas pemahaman materi koding dan performa akademik.
-  Constraints : Algoritma TikTok yang adiktif, keterbatasan waktu dalam satu hari, deadline tugas.
-  Stakeholders: Mahasiswa Ilmu Komputer, Dosen Pengampu, Universitas Putra Bangsa.
+  Input       : Notifikasi smartphone, konten video TikTok, tugas praktikum (Workshop).
+  Process     : Cognitive context-switching (perpindahan fokus dari koding ke hiburan).
+  Output      : Data durasi harian (log Screen Time), jumlah baris kode/tugas yang selesai.
+  Outcome     : Kualitas pemahaman logika pemrograman dan efisiensi belajar.
+  Constraints : Algoritma "Infinite Scroll" yang adiktif, deadline tugas, durasi konsentrasi manusia.
+  Stakeholders: Mahasiswa Ilmu Komputer UPB, Dosen Pengampu, pihak Akademik Kampus.
 
 Fenomena → Problem
-  Fenomena yang diamati             : Mahasiswa sering membuka TikTok saat sela-sela koding/belajar.
-  Gejala (symptom) yang terukur     : Tugas Workshop selesai lebih lama dari estimasi; sering terjadi "blank" saat koding.
-  Masalah yang didiagnosis          : Penurunan daya fokus (deep work) akibat stimulasi dopamin instan secara terus-menerus.
-  Masalah riset (researchable)      :Korelasi antara intensitas penggunaan TikTok (menit/hari) terhadap skor konsentrasi mahasiswa IT saat sesi belajar mandiri.
-  Variabel yang terukur             : Durasi Screen Time (menit), Skor Fokus (skala 1-10), jumlah interupsi per sesi.
+  Fenomena yang diamati             : Mahasiswa sering membuka TikTok di tengah sesi koding mandiri.
+  Gejala (symptom) yang terukur     : Tugas Workshop sering terlambat dikumpulkan atau selesai jauh dari estimasi.
+  Masalah yang didiagnosis          : Fragmentasi atensi akibat lonjakan dopamin dari konten video pendek.
+  Masalah riset (researchable)      : Analisis korelasi antara durasi log Screen Time TikTok terhadap indeks fokus pengerjaan tugas.
+  Variabel yang terukur             : Independen (Durasi TikTok/Menit); Dependen (Skor Fokus & Throughput Tugas).
 
 Problem Quality Check
-  [✔] Clarity — Jelas, fokus pada satu aplikasi (TikTok) dan satu kelompok (Mahasiswa Ilmu Komputer Universitas Putra Bangsa).
-  [✔] Measurability — Bisa diukur dengan data Screen Time asli.
-  [✔] Relevance — Sangat penting karena menyangkut produktivitas mahasiswa IT.
-  [✔] Testability — Bisa gagal jika ternyata TikTok tidak berpengaruh (falsifiable).
-  [✔] Impact — Memberikan solusi manajemen waktu bagi mahasiswa.
+  [✔] Clarity — Fokus pada interaksi Mahasiswa Ilmu Komputer UPB dengan TikTok.
+  [✔] Measurability — Menggunakan log sistem (Screen Time) yang objektif.
+  [✔] Relevance — Sangat penting bagi produktivitas mahasiswa di bidang teknis.
+  [✔] Testability — Hipotesis bisa dibuktikan benar/salah melalui uji statistik.
+  [✔] Impact — Memberikan basis data untuk manajemen waktu belajar mahasiswa.
 
 Problem Statement (1 paragraf):
-  Penggunaan media sosial TikTok yang masif di kalangan mahasiswa Informatika Universitas Putra 
-  Bangsa (UPB) diduga menciptakan pola distraksi digital yang menghambat kemampuan fokus 
-  mendalam (deep work). Meskipun memberikan hiburan, stimulasi konten pendek yang terus-menerus 
-  berpotensi menurunkan daya konsentrasi saat pengerjaan tugas logika pemrograman yang kompleks. 
-  Riset ini bertujuan untuk membuktikan secara kuantitatif apakah durasi penggunaan TikTok yang 
-  terekam pada log Screen Time memiliki korelasi negatif terhadap skor fokus belajar mandiri, 
-  sebagai dasar untuk merumuskan strategi literasi digital yang lebih efektif bagi mahasiswa.
+  Mahasiswa Ilmu Komputer Universitas Putra Bangsa (UPB) saat ini menghadapi tantangan besar 
+  dalam mempertahankan konsentrasi akibat penggunaan aplikasi TikTok yang intensif. Secara 
+  gejala, hal ini terlihat dari meningkatnya durasi penyelesaian tugas pemrograman (Workshop) 
+  akibat seringnya terjadi interupsi atensi. Masalah ini berakar pada gangguan fase 'Deep Work' 
+  yang dipicu oleh stimulasi algoritma konten pendek secara berulang. Riset ini bertujuan 
+  untuk membuktikan secara kuantitatif hubungan antara durasi penggunaan aplikasi (via log 
+  Screen Time) terhadap tingkat fokus belajar, guna merumuskan strategi manajemen waktu yang 
+  lebih efektif bagi mahasiswa Ilmu Komputer.
 ```
 
 ---
@@ -108,19 +109,18 @@ Problem Statement (1 paragraf):
 
 Pilih satu topik di bidang TI yang diminati. Transformasikan melalui 5 tahap Problem Formation Model.
 
-**Topik awal:** ________________________________________
+**Topik awal:** Analisis Dampak Distraksi Algoritma TikTok terhadap Atensi Mahasiswa Ilmu Komputer.
 
 | Tahap | Hasil |
 |-------|-------|
 | Reality | Mahasiswa sering terdistraksi smartphone saat sedang belajar mandiri. |
 | Observed Issue (Symptom) | Waktu pengerjaan tugas Workshop molor dan mahasiswa merasa cepat lelah secara mental. |
-| Diagnosed Problem (Root Cause) | Context switching yang terlalu sering antara konten hiburan TikTok dan logika koding. |
-| Researchable Problem |Pengaruh durasi harian TikTok terhadap tingkat atensi mahasiswa Informatika UPB. |
-| Measurable Variable | Durasi harian (menit), Skor Atensi (skala), dan Frekuensi buka aplikasi.|
+| Diagnosed Problem (Root Cause) | Kegagalan attentional control akibat pola konsumsi konten video pendek yang memicu constant task-switching (perpindahan fokus terus-menerus) |
+| Researchable Problem | Pengaruh durasi harian TikTok terhadap tingkat atensi mahasiswa Informatika UPB. |
+| Measurable Variable | Independen: Menit penggunaan TikTok (Log Screen Time). Dependen: Skor konsentrasi (skala 1-10) dan frekuensi interupsi per 60 menit. |
 
 **Apakah terjebak solution-first thinking?** [ ] Ya / [✔] Tidak
-> Jika ya, kembali ke tahap mana? ________________________
-
+> Jika ya, kembali ke tahap mana? (Sudah benar, fokus pada pencarian bukti korelasi, bukan langsung membuat aplikasi pemblokir TikTok).
 ---
 
 ## Latihan 2 — System Context Decomposition
@@ -129,10 +129,10 @@ Gambarkan konteks sistem dari masalah riset di Latihan 1.
 
 | Komponen | Deskripsi |
 |----------|----------|
-| Input | Notifikasi TikTok, durasi waktu luang, tugas pemrograman dari dosen. |
+| Input | Notifikasi TikTok, durasi waktu luang, tugas pemrograman dari dosen. | 
 | Process | Aktivitas scrolling video (konsumsi konten) vs Aktivitas berpikir logis (koding). |
-| Output | Data statistik waktu layar (Screen Time) dan hasil penilaian tugas (kuantitas). |
-| Outcome | Tingkat penguasaan kompetensi Informatika dan indeks fokus mahasiswa. |
+| Output | Data durasi layar (Screen Time), jumlah baris kode yang dihasilkan, durasi penyelesaian tugas. |
+| Outcome | Kualitas pemahaman logika pemrograman, skor IPK, dan kemampuan atensi jangka panjang mahasiswa. |
 | Constraints | Algoritma For You Page (FYP) yang memicu adiksi, batas kuota internet, durasi tidur. |
 | Stakeholders | Mahasiswa (objek), Dosen (evaluator), dan Kampus UPB (penjamin mutu). |
 
