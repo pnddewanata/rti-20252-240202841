@@ -66,19 +66,19 @@ Metrik harus ditentukan **sebelum** eksperimen. Memilih metrik setelah melihat d
 ```
 VARIABLE & METRIC DEFINITION
 
-Research Question: ____________________
+Research Question:Seberapa besar hubungan antara durasi bermain/scroll TikTok (berdasarkan data asli HP) dengan tingkat fokus belajar koding pada mahasiswa Ilmu Komputer UPB?
 
 | Variabel | Tipe | Konsep | Metrik | Skala | Satuan | Cara Mengukur | Justifikasi |
 |----------|------|--------|--------|-------|--------|---------------|-------------|
-|          | IV   |        |        |       |        |               |             |
-|          | DV   |        |        |       |        |               |             |
-|          | CV   |        |        |       |        |               |             |
+| Durasi TikTok | IV   | Konsumsi hiburan digital. | Menit penggunaan harian rata-rata. |   Ratio   |   Menit   |  Cek log Screen Time / Digital Wellbeing (7 hari terakhir).  | Pakai data sistem biar hasilnya jujur, nggak cuma tebak-tebakan responden. |
+| Fokus Belajar | DV | Kemampuan konsentrasi kognitif. | Skor fokus mandiri. |   Ordinal | Skala (1-10) | Kuesioner self-assessment (Skala Likert). | Paling pas buat menangkap perasaan mahasiswa pas lagi belajar. |
+| Beban Koding  | CV | Tekanan tugas teknis. | Jumlah SKS praktikum. | Ratio |  SKS | Pendataan jumlah mata kuliah Workshop semester berjalan. | Biar adil, karena anak yang tugas kodingnya banyak pasti pola fokusnya beda.|
 
 Alignment Check:
-  RQ → Concept → Variable → Metric → Data → Result
-  [ ] Setiap langkah terdokumentasi
-  [ ] Tidak ada "lompatan logis"
-  [ ] Metrik mengukur apa yang dimaksud (construct validity)
+  RQ (Korelasi) → Concept (Atensi) → Variable (Fokus) → Metric (Skala 1-10) → Data (Ordinal) → Result (Hasil Korelasi)
+  [X] Setiap langkah terdokumentasi
+  [X] Tidak ada "lompatan logis"
+  [X] Metrik mengukur apa yang dimaksud (construct validity)
 ```
 
 ---
@@ -87,15 +87,14 @@ Alignment Check:
 
 Gunakan RQ dari WS-04. Definisikan variabel dan metriknya.
 
-**RQ:** __________________________________________________
-
+**RQ:** Bagaimana hubungan antara durasi penggunaan TikTok (berdasarkan data sistem) terhadap tingkat konsentrasi belajar mahasiswa Ilmu Komputer di Universitas Putra Bangsa?
 | Variabel | Tipe | Konsep Abstrak | Metrik Konkret | Skala (NOIR) | Satuan |
 |----------|------|---------------|----------------|-------------|--------|
-| *Contoh: Jenis model* | *IV* | *Pendekatan klasifikasi* | *Categorical: CNN vs RF* | *Nominal* | *—* |
-| | DV | | | | |
-| | CV | | | | |
+| Fokus Belajar | IV | Konsumsi hiburan digital. | Menit penggunaan harian rata-rata. | Ratio | Menit |
+| Fokus Belajar | DV | Kemampuan konsentrasi kognitif. | Skor fokus mandiri. | Ordinal | Skala (1-10) |
+| Beban Koding  | CV | Tekanan tugas teknis. | Jumlah SKS praktikum. |  Ratio |  SKS |
 
-**Apakah ada lompatan logis dalam rantai?** [ ] Ya / [ ] Tidak
+**Apakah ada lompatan logis dalam rantai?** [ ] Ya / [X] Tidak
 > Jika ya, di mana? ____________________________________
 
 ---
@@ -106,15 +105,15 @@ Evaluasi metrik DV yang dipilih di Latihan 1 menggunakan 3 kriteria.
 
 | Kriteria | Skor (1-5) | Justifikasi |
 |----------|-----------|-------------|
-| Representative | *Contoh: 4 — F1-Score mewakili keseimbangan precision-recall* | |
-| Sensitive | | |
-| Feasible | | |
+| Representative | 5 | Skala fokus sangat mewakili perasaan mahasiswa apakah mereka merasa terganggu atau tidak saat sedang koding atau belajar mandiri. |
+| Sensitive | 4 | Rentang skala 1-10 cukup adil untuk membedakan level konsentrasi setiap orang, daripada hanya pakai pilihan "Ya/Tidak". |
+| Feasible | 5 | Sangat mudah untuk dikumpulkan karena responden hanya perlu mengisi kuesioner singkat di Google Form. |
 
-**Apakah perlu secondary metric?** [ ] Ya / [ ] Tidak
-> Jika ya, apa dan mengapa? _____________________________
+**Apakah perlu secondary metric?** [✔] Ya / [ ] Tidak
+> Jika ya, apa dan mengapa? Perlu metrik tambahan berupa "Jumlah Interupsi" (berapa kali mengecek HP saat belajar). Hal ini penting untuk memvalidasi apakah skor fokus yang mereka isi di kuesioner sesuai dengan kenyataan di lapangan.
 
 **Contoh kasus ceiling effect untuk metrik ini:**
-> ___________________________________________________
+> Jika pilihan jawaban maksimal di kuesioner hanya "Bisa fokus selama 30 menit", padahal rata-rata mahasiswa IT di UPB sanggup fokus koding hingga 2 jam. Akibatnya, semua data akan menumpuk di angka maksimal (30 menit) dan kita tidak bisa melihat siapa yang sebenarnya punya ketahanan fokus lebih tinggi.
 
 ---
 
@@ -124,10 +123,10 @@ Bayangkan data yang akan dikumpulkan dari eksperimen. Evaluasi 4 dimensi kualita
 
 | Dimensi | Pertanyaan | Jawaban | Strategi Mitigasi |
 |---------|-----------|---------|------------------|
-| Completeness | *Apakah semua data point terkumpul?* | | |
-| Consistency | *Apakah ada kontradiksi internal?* | | |
-| Validity | *Apakah benar-benar mengukur yang dimaksud?* | | |
-| Representativeness | *Apakah sampel mewakili populasi target?* | | |
+| Completeness | Apakah semua data point terkumpul? | Ada risiko responden lupa melampirkan bukti screenshot penggunaan TikTok. | Mengaktifkan fitur "Wajib Isi" (required) dan fitur unggah file pada Google Form agar responden tidak bisa mengirim data sebelum bukti terlampir. |
+| Consistency | Apakah ada kontradiksi internal dalam data? | Mungkin ada responden yang mengaku jarang membuka TikTok, tapi bukti Screen Time-nya menunjukkan durasi sangat tinggi. | Melakukan pembersihan data (data cleaning) secara manual dengan membuang jawaban yang tidak sinkron antara teks kuesioner dan bukti foto. |
+| Validity | Apakah benar-benar mengukur yang dimaksud? | Penggunaan log Screen Time dari sistem HP adalah cara paling sah untuk mengukur durasi aplikasi secara nyata. | Menyertakan gambar tutorial singkat di kuesioner tentang cara mengambil screenshot fitur Digital Wellbeing atau Screen Time yang benar. |
+| Representativeness | Apakah sampel mewakili populasi target? | Ada kekhawatiran data hanya terkumpul dari satu kelas atau satu angkatan saja (misalnya kelas 4IKRA saja). | Mendistribusikan link kuesioner secara merata melalui ketua tingkat atau grup WhatsApp resmi setiap angkatan (Informatika angkatan 2024 dan 2025) di UPB. |
 
 ---
 
@@ -136,5 +135,5 @@ Bayangkan data yang akan dikumpulkan dari eksperimen. Evaluasi 4 dimensi kualita
 > Mengapa memilih metrik setelah melihat data dianggap p-hacking? Apa bedanya dengan eksplorasi data yang sah?
 
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+> Memilih metrik hanya setelah kita melihat hasil data dianggap sebagai p-hacking karena tindakan tersebut merupakan bentuk manipulasi ilmiah. Peneliti cenderung hanya mengambil metrik yang memberikan hasil signifikan atau yang mendukung hipotesis awalnya saja, sementara metrik yang hasilnya tidak sesuai disembunyikan atau dibuang. Hal ini jelas merusak integritas dan objektivitas sebuah penelitian karena kesimpulan yang diambil tidak lagi murni dari fakta yang ada.
+> Perbedaannya dengan eksplorasi data yang sah terletak pada tujuannya. Eksplorasi data dilakukan untuk mencari wawasan baru, pola yang tidak terduga, atau anomali menarik di luar hipotesis utama. Namun, dalam eksplorasi yang benar, hasil temuan tersebut harus dilaporkan secara transparan sebagai "temuan tambahan" atau saran untuk penelitian masa depan, bukan digunakan sebagai alat untuk memaksakan pembenaran atas hipotesis utama yang sudah ditetapkan sejak awal desain riset.
