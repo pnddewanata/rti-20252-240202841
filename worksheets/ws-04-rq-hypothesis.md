@@ -67,35 +67,34 @@ Jika rantai ini tidak lengkap, RQ belum mature. Bi-directional: RQ yang tidak bi
 ```
 RQ-CONTRIBUTION-HYPOTHESIS
 
-Gap Statement  : ____________________
+Gap Statement  : Riset-riset sebelumnya (seperti Azizah, 2025) hanya menggunakan tebakan responden soal berapa lama mereka main TikTok, padahal ingatan orang sering nggak akurat (recall bias). Selain itu, belum ada penelitian yang fokus ke mahasiswa Ilmu Komputer yang butuh konsentrasi tinggi buat koding.
 
 Research Question:
-  Tipe         : [ ] Comparison  [ ] Improvement  [ ] Exploratory
-  Formulasi    : ____________________
-  Variabel IV  : ____________________
-  Variabel DV  : ____________________
-  Metrik       : ____________________
-  Dataset      : ____________________
-  Baseline     : ____________________
+  Tipe         : [ ] Comparison  [ ] Improvement  [✔] Exploratory
+  Formulasi    : Seberapa besar pengaruh durasi main TikTok yang tercatat di HP (Screen Time) terhadap tingkat fokus belajar koding pada mahasiswa Ilmu Komputer UPB?
+  Variabel IV  : Durasi penggunaan TikTok (Menit per hari).
+  Variabel DV  : Skor fokus belajar mandiri (Skala 1-10).
+  Metrik       : Angka korelasi (untuk melihat seberapa kuat hubungannya).
+  Dataset      : Data primer dari mahasiswa aktif Ilmu Komputer UPB.
+  Baseline     : Hasil riset Azizah & Anshori (2025) yang masih pakai kuesioner ingatan responden.
 
 Quality Check RQ:
-  [ ] Variabel spesifik
-  [ ] Metrik jelas
-  [ ] Baseline ada
-  [ ] Konteks disebutkan
-  [ ] Memerlukan eksperimen (bukan hanya survei literatur)
+  [✔] Variabel spesifik
+  [✔] Metrik jelas
+  [✔] Baseline ada
+  [✔] Konteks disebutkan
+  [✔] Memerlukan eksperimen (bukan hanya survei literatur)
 
 Contribution Statement:
-  Apa yang baru diketahui : ____________________
-  Jenis kontribusi        : [ ] Improvement  [ ] Comparison  [ ] Novel approach
-  Gap yang diisi          : ____________________
-
+  Apa yang baru diketahui :Hubungan nyata (berdasarkan data asli dari sistem HP) antara main TikTok dan kemampuan fokus mahasiswa IT.
+  Jenis kontribusi        : [ ] Improvement  [✔] Comparison  [ ] Novel approach
+  Gap yang diisi          : Menutup Data Gap dengan menggunakan data durasi yang lebih objektif/asli.
+  
 Hypothesis Pair:
-  H₀ : ____________________
-  H₁ : ____________________
-  Threshold              : ____________________
-  Justifikasi threshold  : ____________________
-```
+  H₀ : Bermain/Scroll TikTok tidak ada hubungannya sama tingkat fokus belajar mahasiswa.
+  H₁ : Semakin lama main/scroll TikTok, tingkat fokus belajar mahasiswa bakal semakin turun.
+  Threshold              :$p < 0.05$.
+  Justifikasi threshold  : Standar umum biar hasil risetnya dianggap sah dan bukan kebetulan saja.
 
 ---
 
@@ -103,25 +102,23 @@ Hypothesis Pair:
 
 Gunakan gap yang ditemukan di WS-03. Transformasikan menjadi Research Question.
 
-**Gap dari WS-03:** ____________________________________
-
+**Gap dari WS-03:**Riset lama hanya bertanya "kira-kira main/scroll TikTok berapa lama?", dan belum meneliti mahasiswa koding yang butuh fokus tinggi. umum, belum menyentuh mahasiswa IT yang butuh fokus tinggi untuk debugging.
 **RQ versi pertama (tulis bebas):**
-> ___________________________________________________
+> Apakah waktu yang dihabiskan mahasiswa IT di TikTok mempengaruhi kemampuan mereka untuk fokus saat belajar koding?
 
 **Evaluasi RQ:**
 
 | Komponen | Ada? | Isi |
 |----------|------|-----|
-| Metode spesifik | *Contoh: Ya — CNN vs RF* | |
-| Metrik terukur | | |
-| Baseline | | |
-| Dataset/konteks | | |
+| Metode spesifik | Ya | Analisis korelasi data sistem vs skor fokus. |
+| Metrik terukur | Ya | Menit durasi (Screen Time) dan skor skala fokus. |
+| Baseline | Ya | Riset Azizah dkk (2025). |
+| Dataset/konteks | Ya | Mahasiswa Informatika Universitas Putra Bangsa. |
 
-**Tipe RQ:** [ ] Comparison / [ ] Improvement / [ ] Exploratory
+**Tipe RQ:** [ ] Comparison / [ ] Improvement / [✔] Exploratory
 
 **RQ versi revisi (setelah evaluasi):**
-> ___________________________________________________
-
+> Bagaimana hubungan antara durasi penggunaan TikTok (berdasarkan data sistem) terhadap tingkat konsentrasi belajar mahasiswa Ilmu Komputer di Universitas Putra Bangsa?
 ---
 
 ## Latihan 2 — Hypothesis Pair
@@ -130,14 +127,14 @@ Rumuskan pasangan hipotesis dari RQ di Latihan 1.
 
 | Komponen | Isi |
 |----------|-----|
-| H₀ | *Contoh: Tidak ada perbedaan signifikan F1-Score antara CNN dan RF pada dataset CIC-MalMem-2022* |
-| H₁ | |
-| Metrik | |
-| Threshold | |
-| Justifikasi threshold | |
+| H₀ | Bermain/Scroll TikTok tidak ada hubungannya sama tingkat fokus belajar mahasiswa. |
+| H₁ | Semakin lama main/scroll TikTok, tingkat fokus belajar mahasiswa bakal semakin turun. |
+| Metrik | Koefisien korelasi ($r$). |
+| Threshold | Sig. < 0.05. |
+| Justifikasi threshold | Batas aman biar hasil penelitian dianggap akurat secara statistik.. |
 
-**Apakah hipotesis ini falsifiable?** [ ] Ya / [ ] Tidak
-> Bagaimana cara membuktikannya salah? ___________________
+**Apakah hipotesis ini falsifiable?** [✔] Ya / [ ] Tidak
+> Bagaimana cara membuktikannya salah? Pada saat dihitung menggunakan statistik ternyata nilainya di atas 0.05, berarti dugaan kita (H₁) salah dan kita harus terima H₀.
 
 ---
 
@@ -147,15 +144,15 @@ Lengkapi rantai dari RQ hingga metode analisis.
 
 | Tahap | Isi |
 |-------|-----|
-| RQ | *Contoh: Apakah CNN menghasilkan F1-Score lebih tinggi dari RF...* |
-| Variable (IV) | *Contoh: Jenis algoritma (CNN vs RF)* |
-| Variable (DV) | |
-| Metric | |
-| Data source | |
-| Analysis method | |
+| RQ | Seberapa besar pengaruh durasi TikTok ke fokus belajar mahasiswa IT? |
+| Variable (IV) | Waktu harian main TikTok (Data sistem). |
+| Variable (DV) | Tingkat konsentrasi/fokus belajar. |
+| Metric | Menit (untuk durasi) dan Skala 1-10 (untuk fokus). |
+| Data source | Bukti Screen Time dan Kuesioner. |
+| Analysis method | Uji Korelasi Bivariat. |
 
-**Apakah rantai lengkap?** [ ] Ya / [ ] Tidak
-> Jika tidak, tahap mana yang perlu direvisi? ______________
+**Apakah rantai lengkap?** [✔] Ya / [ ] Tidak
+> Jika tidak, tahap mana yang perlu direvisi? -
 
 ---
 
@@ -163,6 +160,6 @@ Lengkapi rantai dari RQ hingga metode analisis.
 
 > Ambil satu judul skripsi/paper yang pernah dibaca. Coba ekstrak RQ-nya. Apakah RQ tersebut memenuhi semua komponen (metode, metrik, baseline, konteks)? Jika tidak, apa yang hilang?
 
-**Judul:** _____________________________________________
-**RQ yang diekstrak:** __________________________________
-**Komponen yang hilang:** _______________________________
+**Judul:** Analisis Pengaruh Penggunaan Media Sosial TikTok Terhadap Konsentrasi Belajar Mahasiswa (Azizah & Anshori, 2025).
+**RQ yang diekstrak:** Apakah main TikTok berpengaruh ke konsentrasi belajar mahasiswa?
+**Komponen yang hilang:**Belum menyebutkan metrik yang jelas, nggak ada baseline pembanding, dan nggak nyebutin konteks belajar yang spesifik (misal: koding).
