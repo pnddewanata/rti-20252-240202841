@@ -67,25 +67,25 @@ Jika variabel tidak bisa di-map ke komponen apapun → arsitektur perlu didesain
 ```
 SYSTEM-EXPERIMENT MAPPING
 
-Research Question: ____________________
+Research Question: Bagaimana hubungan korelasi antara intensitas penggunaan TikTok berdasarkan data Log Screen Time terhadap tingkat fokus belajar koding mahasiswa Informatika UPB menggunakan metode korelasi bivariat guna menyempurnakan kelemahan data subjektif pada riset Azizah & Anshori 2025?
 
 Variable → Component Mapping:
 | Variabel | Tipe | Komponen Sistem | Cara Manipulasi/Pengukuran |
 |----------|------|-----------------|---------------------------|
-|          | IV   |                 |                           |
-|          | DV   |                 |                           |
-|          | CV   |                 |                           |
+|     Intensitas TikTok     | IV   |        Modul Ekstraksi Log Sistem         |           Mengambil durasi penggunaan harian secara presisi dalam satuan menit melalui fitur Digital Wellbeing atau Screen Time.                |
+|     Fokus Belajar     | DV   |        Instrumen Penilaian Atensi         |            Pengisian kuesioner self-assessment pasca-aktivitas koding untuk mendapatkan skor konsentrasi (skala 1-10).               |
+|    Beban Koding      | CV   |       Modul Filter Profil Responden          |             Membatasi dataset hanya pada mahasiswa yang menempuh mata kuliah praktikum/workshop pada semester berjalan.              |
 
 4 Prinsip Desain:
-  [ ] Traceability — Setiap komponen bisa ditelusuri ke variabel
-  [ ] Variable Isolation — IV bisa diubah tanpa mengubah CV
-  [ ] Measurement Integration — Pengukuran DV built-in
-  [ ] Reproducibility — Setup bisa direkonstruksi
+  [x] Traceability — Tiap data (menit log dan skor kuesioner) punya jalur yang jelas menuju variabel penelitian.
+  [x] Variable Isolation — Cara pengambilan durasi TikTok (IV) bisa diubah tanpa mengganggu cara pengukuran fokus (DV).
+  [x] Measurement Integration — Pengukuran data durasi sudah menyatu dengan sistem ponsel, bukan lagi tebakan manual.
+  [x] Reproducibility — Langkah-langkah pengambilan data bisa dilakukan ulang oleh orang lain dengan prosedur yang sama.
 
 Experimental Setup:
-  Input data     : ____________________
-  Parameter      : ____________________
-  Output format  : ____________________
+  Input data: Data mentah log aplikasi (menit) dan respon kuesioner koding mahasiswa.
+  Parameter: Mahasiswa aktif Prodi Informatika yang terlibat dalam tugas praktikum.
+  Output format: Tabel data numerik (format .csv atau .xlsx) yang siap diolah secara statistik
 ```
 
 ---
@@ -94,15 +94,15 @@ Experimental Setup:
 
 Gunakan RQ dan variabel dari WS-05. Petakan ke komponen sistem.
 
-**RQ:** __________________________________________________
+**RQ:** Research Question: Bagaimana hubungan korelasi antara intensitas penggunaan TikTok berdasarkan data Log Screen Time terhadap tingkat fokus belajar koding mahasiswa Informatika UPB menggunakan metode korelasi bivariat guna menyempurnakan kelemahan data subjektif pada riset Azizah & Anshori 2025?
 
-| Variabel | Tipe | Komponen Sistem | Cara Manipulasi / Pengukuran |
+| Variabel | Tipe | Komponen Sistem | Cara Manipulasi/Pengukuran |
 |----------|------|-----------------|---------------------------|
-| *Contoh: Jenis model* | *IV* | *Modul classifier (swap RF ↔ CNN)* | *Ganti config `model_type`* |
-| | DV | | |
-| | CV | | |
+|     Intensitas TikTok     | IV   |        Modul Ekstraksi Log Sistem         |           Mengambil durasi penggunaan harian secara presisi dalam satuan menit melalui fitur Digital Wellbeing atau Screen Time.   |
+|     Fokus Belajar     | DV   |        Instrumen Penilaian Atensi         |            Pengisian kuesioner self-assessment pasca-aktivitas koding untuk mendapatkan skor konsentrasi (skala 1-10).               |
+|    Beban Koding      | CV   |       Modul Filter Profil Responden          |             Membatasi dataset hanya pada mahasiswa yang menempuh mata kuliah praktikum/workshop pada semester berjalan.  | 
 
-**Apakah semua variabel bisa di-map?** [ ] Ya / [ ] Tidak
+**Apakah semua variabel bisa di-map?** [✓] Ya / [ ] Tidak
 > Jika tidak, komponen apa yang perlu ditambahkan? _________
 
 ---
@@ -113,14 +113,14 @@ Evaluasi desain sistem terhadap 4 prinsip.
 
 | Prinsip | Status | Bukti / Penjelasan |
 |---------|--------|-------------------|
-| Traceability | *Contoh: ✅ — setiap modul punya label variabel* | |
-| Modularity | | |
-| Controllability | | |
-| Measurability | | |
+| Traceability | ✅ | Sangat jelas terlihat; angka menit dari log sistem merepresentasikan variabel intensitas secara konkret. |
+| Modularity | ✅ | Modul pengambilan data IV dan DV berdiri sendiri, sehingga salah satu bisa diganti tanpa merusak modul lainnya. |
+| Controllability | ✅ | Faktor luar diredam dengan mengunci profil responden (CV) melalui kriteria pemilihan subjek di awal. |
+| Measurability | ✅ | Sistem menghasilkan data kuantitatif yang pasti, bukan sekadar perkiraan atau kualitatif biasa. |
 
-**Prinsip mana yang paling sulit dipenuhi?** _______________
+**Prinsip mana yang paling sulit dipenuhi?** Controllability.
 **Strategi untuk mengatasinya:**
-> ___________________________________________________
+> Melakukan verifikasi ketat pada profil responden saat pengumpulan data untuk memastikan beban tugas mereka benar-benar setara.
 
 ---
 
@@ -130,15 +130,14 @@ Jika sistem memiliki 3 komponen utama, rencanakan ablation study.
 
 | Kondisi | Komponen A | Komponen B | Komponen C | Hasil yang Diharapkan |
 |---------|-----------|-----------|-----------|----------------------|
-| Full | *Contoh: ✅ CNN* | *Contoh: ✅ Temporal features* | *Contoh: ✅ Z-score norm* | *Baseline penuh* |
-| – A | ❌ (ganti RF) | ✅ | ✅ | |
-| – B | ✅ | ❌ (tanpa temporal) | ✅ | |
-| – C | ✅ | ✅ | ❌ (tanpa normalisasi) | |
+| Full | ✅ Log Screen Time | ✅ Spesifik Koding | ✅ Korelasi Bivariat | *Hasil riset yang paling valid dan akurat. |
+| – A | ❌ (Ganti Survei) | ✅ | ✅ | Hasil akan bias karena data durasi hanya berdasarkan ingatan responden. |
+| – B | ✅ | ❌ (Belajar Umum) | ✅ | |
+| – C | ✅ | ✅ | ❌ (Deskriptif) | |
 
-**Komponen mana yang diprediksi paling berkontribusi?** _____
+**Komponen mana yang diprediksi paling berkontribusi?** Komponen A (Log Screen Time).
 **Mengapa?**
-> ___________________________________________________
-
+> Karena distorsi terbesar pada riset terdahulu terletak pada ketidakakuratan data durasi. Dengan mengganti metode pengambilan data menjadi log sistem, validitas riset ini meningkat drastis.
 ---
 
 ## Refleksi
@@ -146,5 +145,5 @@ Jika sistem memiliki 3 komponen utama, rencanakan ablation study.
 > Apa risiko jika sistem dibangun seperti produk (monolitik, fitur lengkap) lalu baru dilakukan eksperimen? Mengapa arsitektur modular penting untuk riset?
 
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+> Risiko utama jika sistem riset dibangun seperti produk (monolitik) adalah kita akan kesulitan menentukan penyebab pasti dari hasil yang ditemukan. Jika sistem terlalu menyatu dan memiliki banyak fitur tambahan, akan muncul banyak "noise" atau variabel pengganggu yang mengaburkan hubungan antara IV dan DV.
+> Itulah mengapa arsitektur modular sangat krusial dalam riset. Dengan modul-modul yang terpisah, kita bisa melakukan isolasi variabel—menguji satu faktor sambil memastikan faktor lain tetap konstan. Hal ini membuat penelitian menjadi lebih transparan, akurat, dan yang paling penting, hasilnya bisa diuji kembali oleh peneliti lain dengan tingkat kepercayaan yang tinggi.
