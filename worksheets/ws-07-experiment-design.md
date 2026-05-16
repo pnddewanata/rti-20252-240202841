@@ -1,3 +1,4 @@
+
 # WS-07: Experimental Design & Validity
 
 > **Bab 7 — Experimental Design & Validity**
@@ -106,13 +107,13 @@ Statistical Plan:
 
 Susun desain eksperimen berdasarkan RQ, variabel, dan sistem dari WS-04 sampai WS-06.
 
-**RQ:** __________________________________________________
-**Tipe eksperimen:** [ ] Comparison / [ ] Ablation / [ ] Parameter
+**RQ:** Bagaimana hubungan korelasi antara intensitas penggunaan TikTok berdasarkan data Log Screen Time terhadap tingkat fokus belajar koding mahasiswa Informatika UPB menggunakan metode analisis korelasi bivariat guna menyempurnakan kelemahan data subjektif pada riset Azizah & Anshori 2025?
+**Tipe eksperimen:** [✔] Comparison / [ ] Ablation / [ ] Parameter
 
 | Kondisi | Deskripsi | IV Value | CV Settings |
 |---------|-----------|----------|-------------|
-| Control | *Contoh: RF baseline dari literatur* | *RF* | *Dataset X, 80:20 split, seed 42* |
-| Treatment | | | |
+| Control | Mereplikasi model riset terdahulu (baseline dari literatur) yang mengandalkan ingatan untuk menangkap intensitas durasi. | Durasi subjektif (perkiraan menit dari kuesioner responden). | Mahasiswa Informatika UPB, kuesioner fokus berskala Likert 1-10, batas waktu pelaporan yang sama. |
+| Treatment | Menerapkan model pengukuran baru yang diusulkan dalam penelitian ini untuk mendapatkan validitas data yang presisi. | Durasi objektif (angka menit riil dari Log Screen Time). | Mahasiswa Informatika UPB, kuesioner fokus berskala Likert 1-10, batas waktu pelaporan yang sama. |
 
 ---
 
@@ -122,13 +123,13 @@ Evaluasi apakah desain eksperimen di Latihan 1 sudah fair.
 
 | Kriteria | Status | Detail |
 |----------|--------|--------|
-| Dataset identik | *Contoh: ✅ — sama-sama pakai CIC-MalMem-2022* | |
-| Preprocessing setara | | |
-| Tuning effort setara | | |
-| Environment identik | | |
-| Metrik evaluasi sama | | |
+| Dataset identik | ✅ | Subjek penelitian tidak diubah; kelompok mahasiswa Informatika UPB yang sama digunakan untuk mengisi kedua jenis parameter durasi tersebut. |
+| Preprocessing setara | ✅ | Aturan penyaringan data aneh (outlier) diberlakukan sama rata, seperti mengeliminasi data jika ada responden yang mengisi skor fokus namun durasi lognya kosong |
+| Tuning effort setara | ✅ | Kedua kondisi data diuji menggunakan perangkat lunak analisis statistik yang sama dan diuji pada tingkat kepercayaan (alpha) 0,05 yang identik. |
+| Environment identik | ✅ | Proses pengambilan data dilakukan pada rentang minggu kuliah yang sama agar beban tugas praktikum mahasiswa tidak berubah di tengah jalan. |
+| Metrik evaluasi sama | ✅ | Instrumen pengukur variabel dependen (DV) pada kedua kondisi tetap mengacu pada instrumen pengukuran ketahanan atensi (Deep Work) yang sama. |
 
-**Ada yang tidak fair?** [ ] Ya / [ ] Tidak
+**Ada yang tidak fair?** [ ] Ya / [✔] Tidak
 > Jika ya, bagaimana cara memperbaikinya? ________________
 
 ---
@@ -139,15 +140,14 @@ Identifikasi ancaman validitas untuk desain eksperimen ini.
 
 | Threat Type | Ancaman Spesifik | Mitigasi |
 |-------------|-----------------|----------|
-| Internal | *Contoh: Data leakage antara train-test* | *Contoh: Gunakan stratified split, validasi tidak ada overlap* |
-| External | | |
-| Construct | | |
-| Conclusion | | |
+| Internal | Confounding variables: Mahasiswa merasa hilang fokus bukan karena TikTok, tetapi karena kurang tidur atau kopi yang dikonsumsi sebelum koding. | Menambahkan pertanyaan penapis (screening question) mengenai durasi tidur malam sebelum sesi belajar koding dimulai untuk menyaring data bias. |
+| External | Hasil korelasi hanya mencerminkan ekosistem belajar mahasiswa di internal kampus UPB kelas 4IKRA dan tidak mewakili kampus lain. | Mengumpulkan sampel dari beberapa kelas paralel di program studi Informatika UPB agar variasi data dan karakteristik responden lebih luas. |
+| Construct | Responden salah memahami definisi "fokus belajar koding", sehingga pengisian skala Likert menjadi asal-asalan. | Menyediakan glosarium singkat dan contoh konkret dari setiap angka skala Likert (1-10) di bagian atas kuesioner sebelum responden mengisi. |
+| Conclusion | Data durasi log sistem tidak terdistribusi secara normal, sehingga pemaksaan uji statistik linier bisa menghasilkan kesimpulan keliru. | Melakukan uji normalitas (seperti Shapiro-Wilk) terlebih dahulu. Jika data tidak normal, analisis langsung dialihkan ke uji korelasi non-parametrik Spearman Rank. |
 
-**Ancaman mana yang paling sulit dimitigasi?** _____________
+**Ancaman mana yang paling sulit dimitigasi?**Internal Validity (Faktor Pengganggu/Confounding Variables).
 **Mengapa?**
-> ___________________________________________________
-
+> Karena fokus atau konsentrasi manusia bersifat sangat dinamis dan dipengaruhi oleh banyak faktor eksternal psikologis maupun fisik dalam satu waktu (seperti tingkat stres, masalah pribadi, gangguan lingkungan sekitar, hingga kondisi kesehatan fisik). Sangat sulit untuk mengisolasi 100% bahwa penurunan fokus belajar koding murni hanya disebabkan oleh distraksi TikTok tanpa adanya campur tangan dari faktor-faktor tak terduga tersebut.
 ---
 
 ## Refleksi
@@ -155,6 +155,6 @@ Identifikasi ancaman validitas untuk desain eksperimen ini.
 > Sebuah paper melaporkan "metode kami mengalahkan semua baseline." Apa 3 pertanyaan pertama yang harus diajukan untuk mengevaluasi klaim ini?
 
 **Jawaban:**
-1. ___________________________________________________
-2. ___________________________________________________
-3. ___________________________________________________
+1. Apakah perbandingan yang dilakukan sudah adil (fair comparison)? (Apakah metode baru tersebut diuji pada dataset yang sama, lingkungan perangkat keras yang setara, dan dengan tingkat optimasi parameter yang adil terhadap metode baseline?)
+2. Metrik apa yang digunakan untuk menyatakan bahwa metode tersebut "menang"? (Apakah peningkatan performa tersebut dinilai dari metrik yang relevan dengan masalah nyata, atau jangan-jangan metriknya sengaja dipilih yang hanya menguntungkan metode mereka saja?)
+3. Apakah perbedaan hasil performa tersebut signifikan secara statistik? (Apakah klaim keunggulan itu sudah dibuktikan lewat uji signifikansi statistik seperti t-test atau p-value, atau sebenarnya perbedaannya sangat tipis dan masuk dalam kategori margin error kebetulan?)
