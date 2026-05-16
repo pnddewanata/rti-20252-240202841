@@ -155,6 +155,6 @@ Identifikasi ancaman validitas untuk desain eksperimen ini.
 > Sebuah paper melaporkan "metode kami mengalahkan semua baseline." Apa 3 pertanyaan pertama yang harus diajukan untuk mengevaluasi klaim ini?
 
 **Jawaban:**
-1. Apakah perbandingan yang dilakukan sudah adil (fair comparison)? (Apakah metode baru tersebut diuji pada dataset yang sama, lingkungan perangkat keras yang setara, dan dengan tingkat optimasi parameter yang adil terhadap metode baseline?)
-2. Metrik apa yang digunakan untuk menyatakan bahwa metode tersebut "menang"? (Apakah peningkatan performa tersebut dinilai dari metrik yang relevan dengan masalah nyata, atau jangan-jangan metriknya sengaja dipilih yang hanya menguntungkan metode mereka saja?)
-3. Apakah perbedaan hasil performa tersebut signifikan secara statistik? (Apakah klaim keunggulan itu sudah dibuktikan lewat uji signifikansi statistik seperti t-test atau p-value, atau sebenarnya perbedaannya sangat tipis dan masuk dalam kategori margin error kebetulan?)
+1. **Apakah perbandingan yang dilakukan sudah adil (fair comparison)?** (Apakah metode baru tersebut diuji pada dataset yang sama, lingkungan perangkat keras yang setara, dan dengan tingkat optimasi parameter yang adil terhadap metode baseline?)
+2. **Metrik apa yang digunakan untuk menyatakan bahwa metode tersebut "menang"?** (Apakah peningkatan performa tersebut dinilai dari metrik yang relevan dengan masalah nyata, atau jangan-jangan metriknya sengaja dipilih yang hanya menguntungkan metode mereka saja?)
+3. **Apakah perbedaan hasil performa tersebut signifikan secara statistik?** (Apakah klaim keunggulan itu sudah dibuktikan lewat uji signifikansi statistik seperti t-test atau p-value, atau sebenarnya perbedaannya sangat tipis dan masuk dalam kategori margin error kebetulan?)
