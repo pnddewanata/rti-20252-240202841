@@ -145,7 +145,7 @@ Identifikasi ancaman validitas untuk desain eksperimen ini.
 | Construct | Responden salah memahami definisi "fokus belajar koding", sehingga pengisian skala Likert menjadi asal-asalan. | Menyediakan glosarium singkat dan contoh konkret dari setiap angka skala Likert (1-10) di bagian atas kuesioner sebelum responden mengisi. |
 | Conclusion | Data durasi log sistem tidak terdistribusi secara normal, sehingga pemaksaan uji statistik linier bisa menghasilkan kesimpulan keliru. | Melakukan uji normalitas (seperti Shapiro-Wilk) terlebih dahulu. Jika data tidak normal, analisis langsung dialihkan ke uji korelasi non-parametrik Spearman Rank. |
 
-**Ancaman mana yang paling sulit dimitigasi?**Internal Validity (Faktor Pengganggu/Confounding Variables).
+**Ancaman mana yang paling sulit dimitigasi?** Internal Validity (Faktor Pengganggu/Confounding Variables).
 **Mengapa?**
 > Karena fokus atau konsentrasi manusia bersifat sangat dinamis dan dipengaruhi oleh banyak faktor eksternal psikologis maupun fisik dalam satu waktu (seperti tingkat stres, masalah pribadi, gangguan lingkungan sekitar, hingga kondisi kesehatan fisik). Sangat sulit untuk mengisolasi 100% bahwa penurunan fokus belajar koding murni hanya disebabkan oleh distraksi TikTok tanpa adanya campur tangan dari faktor-faktor tak terduga tersebut.
 ---
