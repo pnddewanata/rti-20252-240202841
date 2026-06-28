@@ -99,23 +99,23 @@ Dokumentasikan environment untuk eksperimen Anda (boleh environment saat ini ata
 
 | Komponen | Spesifikasi |
 |----------|------------|
-| CPU | *Contoh: Intel Core i7-12700H, 14 Core* |
-| RAM | *Contoh: 32 GB DDR5* |
-| GPU | *Contoh: NVIDIA RTX 3060 6GB / CPU-only jika tidak ada GPU* |
-| OS | *Contoh: Ubuntu 22.04 LTS / Windows 11* |
-| Runtime | |
-| Framework | |
-| Random Seed | |
+| CPU | AMD Ryzen 7 7435HS |
+| RAM | 16 GB DDR5 |
+| GPU | NVIDIA GeForce RTX 4050 (6GB GDDR6) |
+| OS | Windows 11 Home 64-bit |
+| Runtime | Google Chrome (Pengumpulan Data) & Python 3.11.9 (Analisis Data) |
+| Framework | Google Colab |
+| Random Seed | N/A (Analisis menggunakan seluruh total populasi sampel $N=40$ secara deterministik) |
 
 **Dependencies (minimal 5):**
 
 | Library | Version | Alasan Dibutuhkan |
 |---------|---------|-------------------|
-| *Contoh: scikit-learn* | *1.3.2* | *Klasifikasi + evaluasi metrik* |
-| | | |
-| | | |
-| | | |
-| | | |
+| Google Forms | Cloud (2026) | MMedia digital untuk mengumpulkan jawaban kuesioner tingkat fokus dan mengunggah berkas tangkapan layar responden. |
+| Android Settings | OS Bawaan | Menu bawaan pada ponsel Android responden untuk melihat fitur Digital Wellbeing (durasi asli TikTok). |
+| iOS Settings | OS Bawaan | Menu bawaan pada ponsel iPhone responden untuk melihat fitur Screen Time (durasi asli TikTok). |
+| Microsoft Excel | 2021 / 365 | Menggabungkan data kuesioner dan data log sistem ke dalam satu tabel, serta membersihkan data yang tidak lengkap. |
+| SPSS | Terbaru | Software standar yang digunakan untuk menghitung rumus uji normalitas (Shapiro-Wilk) dan uji korelasi bivariat secara otomatis. |
 
 ---
 
@@ -125,18 +125,18 @@ Rancang tes repeatability sederhana: jalankan kode yang sama 3× di environment 
 
 | Run | Seed | Metrik Utama | Hasil Sama? |
 |-----|------|-------------|-------------|
-| 1 | *Contoh: 42* | *Contoh: Accuracy* | — |
-| 2 | | | [ ] Ya / [ ] Tidak |
-| 3 | | | [ ] Ya / [ ] Tidak |
+| 1 | N/A | Koefisien Korelasi $r$ & p-value | — |
+| 2 | N/A | Koefisien Korelasi $r$ & p-value | [✓] Ya / [ ] Tidak |
+| 3 | N/A | Koefisien Korelasi $r$ & p-value | [✓] Ya / [ ] Tidak |
 
 **Jika hasil berbeda, kemungkinan penyebab:**
-> ___________________________________________________
+> Adanya kesalahan manusia (human error) saat menyalin atau mengetik ulang angka menit dari foto screenshot ke dalam Excel, atau ada data responden yang terlewat sehingga jumlah baris data berpasangan menjadi tidak konsisten antar-pengujian.
 
 **Checklist kontrol yang sudah diterapkan:**
-- [ ] Random seed di-set di semua level
-- [ ] Tidak ada background process yang mengganggu
-- [ ] Cache dibersihkan antar-run
-- [ ] Config file yang sama untuk semua run
+- [✓] Urutan baris data 40 responden dikunci (tidak diubah-ubah) berdasarkan timestamp masuk.
+- [✓] Semua rumus statistik di Excel/SPSS dicek ulang agar tidak ada sel data yang kosong.
+- [✓] Data kuesioner yang digunakan diambil dari file Master Excel yang sama (.xlsx) tanpa mengubah isinya di setiap putaran tes.
+- [✓] Tombol hitung otomatis pada software dipastikan sudah menyala.
 
 ---
 
@@ -145,25 +145,34 @@ Rancang tes repeatability sederhana: jalankan kode yang sama 3× di environment 
 Tulis README minimum untuk eksperimen Anda (6 komponen wajib).
 
 ```
-# Judul Eksperimen: ____________________
+# Judul Eksperimen: Pengaruh Intensitas Penggunaan TikTok terhadap Konsentrasi Belajar Mahasiswa S1 Ilmu Komputer Universitas Putra Bangsa
 
 ## 1. Environment
-> (Salin spesifikasi dari Latihan 1)
+> Laptop ASUS TUF Gaming A15 (AMD Ryzen 7 7435HS, 16GB RAM, Windows 11 Home). Perangkat pengumpul menggunakan platform Google Forms, dan perangkat responden menggunakan Android (Digital Wellbeing) atau iOS (Screen Time).
 
 ## 2. Installation
-> (Langkah instalasi, misal: "pip install -r requirements.txt")
+> 1. Buat akun Google dan susun Google Form sesuai draf instrumen yang memiliki 3 bagian halaman (Sections).
+> 2. Siapkan software Microsoft Excel atau IBM SPSS Statistics di laptop untuk mengolah data korelasi.
 
 ## 3. Data
-> (Deskripsi data: sumber, format, ukuran)
+> - Sumber: Hasil survei berpasangan dari 40 responden mahasiswa S1 Ilmu Komputer UPB.
+> - Format: Berkas spreadsheet (.xlsx / .csv) dan berkas gambar bukti fisik (.jpg / .png).
+> - Ukuran: 1 file tabel Master Data (40 baris) dan 40 file tangkapan layar (screenshot) log HP.
 
 ## 4. Execution
-> (Command untuk menjalankan eksperimen)
+> 1. Sebarkan tautan kuesioner Google Form kepada target responden mahasiswa.
+> 2. Unduh hasil respons ke format Excel, lalu lakukan proses pembersihan data (cocokkan angka tebakan dengan gambar screenshot bukti log).
+> 3. Jalankan menu uji statistik korelasi bivariat (Analyze > Correlate > Bivariate) secara terpisah untuk data kuesioner (Kondisi A) dan data log asli (Kondisi B).
 
 ## 5. Configuration
-> (File config yang digunakan + parameter kunci)
+> - Alat Ukur Fokus: Kuesioner skala Likert 1-10 (adaptasi instrumen Deep Work).
+> - Rentang Waktu Data Log: Angka menit rata-rata durasi harian selama rentang 30 hari terakhir.
+> - Parameter Uji Statistik: Ambang batas signifikansi Alpha (α) = 0,05.
 
 ## 6. Expected Output
-> (Contoh output yang diharapkan + format)
+> Hasil akhir berupa tabel matriks korelasi statistik:
+> - Kondisi A (Data Kuesioner Subjektif) -> Nilai r negatif lemah, p-value > 0,05 (Hasil tidak signifikan akibat recall bias).
+> - Kondisi B (Data Log Objektif Perangkat) -> Nilai r negatif kuat mendekati -1, p-value < 0,05 (Hasil signifikan dan valid secara statistik).
 ```
 
 ---
@@ -172,6 +181,6 @@ Tulis README minimum untuk eksperimen Anda (6 komponen wajib).
 
 > Apakah eksperimen Anda saat ini bisa direproduksi oleh orang lain tanpa bantuan Anda? Komponen apa yang masih hilang?
 
-**Level saat ini:** [ ] Repeatability / [ ] Reproducibility / [ ] Belum keduanya
+**Level saat ini:** [X] Repeatability / [ ] Reproducibility / [ ] Belum keduanya
 **Komponen yang belum terdokumentasi:**
-> ___________________________________________________
+>Panduan visual (interface mapping) yang memuat tampilan antarmuka secara rinci untuk berbagai sistem operasi Android, seperti One UI pada Samsung, MIUI/HyperOS pada Xiaomi, dan ColorOS pada Oppo, masih perlu dilengkapi. Perbedaan tata letak menu Digital Wellbeing pada setiap merek perangkat dapat menyulitkan peneliti lain di luar Universitas Putra Bangsa dalam memberikan arahan kepada responden apabila hanya mengandalkan petunjuk berbentuk teks. Oleh karena itu, penyertaan lampiran berupa panduan bergambar menjadi langkah penting untuk meningkatkan kemudahan replikasi penelitian serta memastikan prosedur pengumpulan data dapat diterapkan secara konsisten pada berbagai jenis perangkat Android. Dengan demikian, penelitian ini akan memiliki tingkat reproduktibilitas yang lebih baik.
