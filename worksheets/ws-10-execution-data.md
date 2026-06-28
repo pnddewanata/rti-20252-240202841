@@ -96,15 +96,14 @@ Susun execution plan untuk eksperimen Anda. Tentukan skenario, jumlah run, dan s
 
 | Run # | Skenario | Seed | Parameter Kunci | Status |
 |-------|----------|------|----------------|--------|
-| *1* | *Contoh: BERT-base, DS-1* | *42* | *lr=2e-5, epoch=10* | *Planned* |
-| *2* | *BERT-base, DS-1* | *123* | *lr=2e-5, epoch=10* | *Planned* |
-| 3 | | | | |
-| 4 | | | | |
-| 5 | | | | |
+| 1 | Uji Korelasi Kelompok Android | Android OS (Digital Wellbeing) | $N \ge 20$, Retrospektif 30 Hari, $\alpha=0,05$ | Planned |
+| 2 | Uji Korelasi Kelompok iOS | iOS (Screen Time) | $N \ge 15$, Retrospektif 30 Hari, $\alpha=0,05$ | Planned |
+| 3 | Uji Korelasi Gabungan Total  | All OS (Android + iOS) | $N = 40$, Retrospektif 30 Hari, $\alpha=0,05$ | Planned |
 
-**Total skenario:** ____
-**Run per skenario:** ____
-**Total run keseluruhan:** ____
+
+**Total skenario:**3 Skenario Analisis
+**Run per skenario:**1 Kali Running Formula Statistik
+**Total run keseluruhan:** 3 Kali Run Uji Korelasi
 
 ---
 
@@ -115,25 +114,25 @@ Desain format data log untuk eksperimen Anda. Tentukan field apa saja yang akan 
 **Identitas:**
 | Field | Contoh |
 |-------|--------|
-| Run ID | *run-001* |
-| Timestamp | *2025-03-15T10:30:00* |
-| | |
+| Responden ID | RESP-IK-001 sampai RESP-IK-040 |
+| Timestamp | 2026-06-29 11:24:05 |
+| Sistem Operasi | Android / iOS |
 
 **Konfigurasi:**
 | Field | Contoh |
 |-------|--------|
-| Seed | *42* |
-| Code version | *commit abc1234* |
-| | |
+| Target Parameter | Rata-rata Menit Harian (30 Hari Terakhir) |
+| Alat Ukur Fokus | Kuesioner Skala Likert 1-10 (Deep Work) |
+| Status Validasi | VALID / ANOMALI |
 
 **Hasil:**
 | Metrik | Tipe Data | Range Valid |
 |--------|----------|-------------|
-| *Contoh: Accuracy* | *float* | *0.0 – 1.0* |
-| | | |
-| | | |
+| Skor_Fokus_Belajar (DV)| Integer | 1 – 10 |
+| Estimasi_Menit_TikTok (IV - Kondisi A) | Integer | 0 – 1440 Menit |
+| Log_Riil_Menit_TikTok (IV - Kondisi B) | Integer | 0 – 1440 Menit |
 
-**Format output:** [ ] CSV / [ ] JSON / [ ] Database / [ ] Lainnya: ____
+**Format output:** [X] CSV / [X] JSON / [ ] Database / [ ] Lainnya: ____
 
 ---
 
@@ -143,10 +142,10 @@ Rencanakan bagaimana menangani anomali. Untuk setiap jenis, tentukan langkah yan
 
 | Jenis Anomali | Contoh | Tindakan |
 |---------------|--------|----------|
-| Run gagal (crash) | *Contoh: OOM pada batch_size=64* | *Contoh: Dokumentasi, re-run batch_size=32, catat perubahan* |
-| Hasil ekstrem | | |
-| Waktu eksekusi anomali | | |
-| Inkonsistensi dengan run lain | | |
+| Berkas Rusak / Salah Upload | Responden mengunggah foto blur, screenshot galeri foto, atau salah menu log (bukan rata-rata 30 hari). |Dokumentasikan ID Responden, hubungi via WhatsApp untuk meminta screenshot ulang. Jika tidak merespons dalam 1x24 jam, status diubah menjadi DNF (Data Not Found) dan dianulir dari matriks hitung. |
+| Underestimate Bias Ekstrem | Responden menebak durasi TikTok hanya 10 menit (Kondisi A), tetapi di log sistem aslinya tercatat 180 menit (Kondisi B). | Jangan Dihapus. Ini bukan bug, melainkan bukti nyata terjadinya dopamin recall bias. Data ini wajib dipertahankan dan dicatat sebagai temuan utama di Bab 3. |
+| Format Input Tidak Sesuai | Responden mengetik teks manual seperti "2 jam" di kolom menit kuesioner. | Lakukan perbaikan manual (data cleaning) di Excel dengan mengonversinya langsung menjadi angka menit murni ("120") berdasarkan validasi gambar bukti fisik. |
+
 
 **Prinsip:** Detect → Investigate → Document → Decide
 
@@ -157,6 +156,6 @@ Rencanakan bagaimana menangani anomali. Untuk setiap jenis, tentukan langkah yan
 > Pernahkah Anda melaporkan hasil riset/tugas dari single run? Apa risikonya? Bagaimana multiple run mengubah kepercayaan terhadap hasil?
 
 **Pengalaman sebelumnya:**
-> ___________________________________________________
+> Ya, pada tugas-tugas kuliah praktikum sebelumnya saya sering menggunakan data sekali ambil (single run) tanpa adanya proses validasi bukti fisik atau pengujian komparatif. Risikonya adalah terjadinya bias data yang sangat tinggi, data rentan rekayasa, dan kesimpulan statistik yang diambil bisa meleset jauh dari realitas objektif di lapangan (falsifikasi tidak disengaja).
 **Yang akan dilakukan berbeda:**
-> ___________________________________________________
+> Pada riset ini, saya menerapkan metode pengumpulan paralel (Kondisi A vs Kondisi B) dengan sistem Upload Lock sebagai bentuk pembuktian berlapis (multiple verification). Dengan membandingkan tebakan ingatan langsung dengan data sistem operasi pada 40 responden, tingkat kepercayaan dosen penguji terhadap keaslian dataset saya akan meningkat drastis karena data terbukti bersih, memiliki bukti fisik digital, dan lolos uji anomali secara transparan.
