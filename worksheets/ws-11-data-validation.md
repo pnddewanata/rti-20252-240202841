@@ -100,16 +100,14 @@ Verifikasi apakah semua data yang direncanakan sudah terkumpul.
 
 | Skenario | Run Direncanakan | Run Tercatat | Missing | Alasan |
 |----------|-----------------|-------------|---------|--------|
-| *Contoh: BERT, DS-1* | *10* | *10* | *0* | *—* |
-| *LSTM, DS-3* | *10* | *8* | *2* | *OOM pada run 7 & 9* |
-| | | | | |
-| | | | | |
+| Pengumpulan Data Kelompok Android | 22 |*22 | 0 | Target terpenuhi melalui kuesioner halaman 2. |
+| Pengumpulan Data Kelompok iOS | 18 | 18 | 0 | Target terpenuhi melalui kuesioner halaman 3. |
+| Pengumpulan Gabungan (Total) | 40 | 40 | 0 | Seluruh responden berhasil divalidasi berkas upload lock-nya. |
 
-**Total expected:** ____ | **Total actual:** ____ | **Missing:** ____
+**Total expected:** 40 Responden | **Total actual:**40 Responden | **Missing:** 0
 
 **Keputusan untuk data missing:**
-> ___________________________________________________
-
+> Karena tidak ada data yang missing (seluruh 40 responden mengisi data secara lengkap dan mengunggah berkas bukti log HP dengan benar), dataset master dinyatakan lolos uji kelengkapan (Completeness Check) dan dapat langsung dilanjutkan ke tahap deteksi anomali.
 ---
 
 ## Latihan 2 — Anomaly Investigation
@@ -120,23 +118,23 @@ Periksa data Anda untuk anomali. Gunakan metode IQR atau z-score.
 
 | Run | Accuracy (%) |
 |-----|-------------|
-| 1 | *91.2* |
-| 2 | *90.8* |
-| 3 | *91.5* |
-| 4 | *78.3* |
-| 5 | *91.0* |
+| 1 | 35.0 |
+| 2 | 42.0 |
+| 3 | 28.0|
+| 4 | 240.0 |
+| 5 | 50.0 |
 
 **Deteksi outlier:**
-- Q1 = ____ | Q3 = ____ | IQR = ____
-- Batas bawah (Q1 - 1.5×IQR) = ____
-- Batas atas (Q3 + 1.5×IQR) = ____
-- Outlier terdeteksi: ____
+- Q1 =31.5 | Q3 = 95.0 | IQR = 63.5
+- Batas bawah (Q1 - 1.5 × IQR) = -63.75
+- Batas atas (Q3 + 1.5 × IQR) = 190.25
+- Outlier terdeteksi: Run 4 (Nilai 240.0 menit di luar batas atas)
 
 **Investigasi (untuk setiap outlier):**
 
 | Outlier | Nilai | Kemungkinan Penyebab | Keputusan |
 |---------|-------|---------------------|-----------|
-| *Run 4* | *78.3* | *Contoh: thermal throttling setelah 3 run berturut* | *Re-run dengan cooling interval* |
+| Run 4 | 240.0 | Responden mengalami Underestimate Bias ekstrem. Di kuesioner ia menebak hanya bermain TikTok selama 30 menit, padahal bukti screenshot log sistem riil mencatat 270 menit harian. | Pertahankan data. Ini bukan eror teknis laptop atau bug Google Form, melainkan bentuk anomali kontekstual yang valid secara ilmiah untuk membuktikan hipotesis adanya bias ingatan manusia (recall bias). |
 
 ---
 
@@ -144,12 +142,12 @@ Periksa data Anda untuk anomali. Gunakan metode IQR atau z-score.
 
 Buat laporan validasi ringkas untuk dataset eksperimen Anda.
 
-**1. Completeness:** ____% data terkumpul
-**2. Format:** [ ] Konsisten / [ ] Ada inkonsistensi: ____
-**3. Range check (anomali):** ____
-**4. Logic check:** [ ] Parameter sesuai plan / [ ] Ada ketidaksesuaian: ____
+**1. Completeness:**100% data terkumpul (40 dari 40 responden terisi penuh).
+**2. Format:** [X] Konsisten / [ ] Ada inkonsistensi: ____
+**3. Range check (anomali):**Seluruh data durasi berada pada batas logis harian (0 - 1440 menit) dan data skala fokus berada pada rentang 1 - 10.
+**4. Logic check:** [X] Parameter sesuai plan / [ ] Ada ketidaksesuaian: ____
 
-**Kesimpulan:** [ ] Data siap analisis / [ ] Perlu tindakan: ____
+**Kesimpulan:** [X] Data siap analisis / [ ] Perlu tindakan: ____
 
 ---
 
@@ -157,5 +155,5 @@ Buat laporan validasi ringkas untuk dataset eksperimen Anda.
 
 > Apa perbedaan antara "data yang benar" dan "data yang dipercaya"? Mengapa proses validasi formal diperlukan meskipun data dikumpulkan secara otomatis?
 
-> ___________________________________________________
-> ___________________________________________________
+> Data asli merupakan data yang diisikan langsung oleh responden ke dalam Google Form berdasarkan ingatan atau persepsi pribadi mengenai durasi penggunaan TikTok. Sebagai contoh, seorang responden dapat menuliskan bahwa dirinya hanya menggunakan TikTok selama 15 menit dalam sehari. Data ini menggambarkan persepsi subjektif responden sehingga masih berpotensi dipengaruhi oleh keterbatasan daya ingat maupun bias pelaporan.
+>Sebaliknya, data terverifikasi adalah data yang telah melalui proses pembuktian menggunakan bukti digital berupa tangkapan layar (screenshot) riwayat penggunaan aplikasi yang berasal dari fitur bawaan sistem operasi Android maupun iOS. Bukti tersebut dikumpulkan melalui mekanisme Upload Lock, sehingga setiap data yang digunakan dalam penelitian memiliki dasar verifikasi yang jelas. Dengan adanya bukti pendukung tersebut, data terverifikasi memiliki tingkat keandalan, keaslian, dan integritas yang lebih tinggi dibandingkan data yang hanya bersumber dari pengakuan responden.
