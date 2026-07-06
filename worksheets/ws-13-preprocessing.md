@@ -103,14 +103,12 @@ Periksa dataset Anda (atau dataset contoh) dan dokumentasikan masalah yang ditem
 
 | Masalah | Jumlah Kasus | Penanganan | Justifikasi |
 |---------|-------------|------------|-------------|
-| *Contoh: Missing di kolom "label"* | *12 dari 500 (2.4%)* | *Listwise deletion* | *< 5%, distribusi random (MCAR)* |
-| | | | |
-| | | | |
-| | | | |
+| Format input tidak seragam (ditulis manual) | 3 dari 40 data (7,5%) | Penyuntingan data secara manual (data editing) | Data yang ditulis dalam bentuk teks, seperti "1,5 jam", dikonversi menjadi satuan menit (90 menit) berdasarkan bukti tangkapan layar log penggunaan perangkat sehingga seluruh data memiliki format yang sama. |
 
-**Jumlah data sebelum cleaning:** ____
-**Jumlah data setelah cleaning:** ____
-**Persentase data yang hilang/berubah:** ____%
+
+**Jumlah data sebelum cleaning:** 40 Data
+**Jumlah data setelah cleaning:** 40 Data
+**Persentase data yang hilang/berubah:** Sebanyak 7,5% data mengalami penyesuaian format, sedangkan tidak ada data yang dihapus selama proses pembersihan.
 
 ---
 
@@ -120,16 +118,17 @@ Tentukan apakah data Anda perlu normalisasi, dan jika ya, metode apa yang tepat.
 
 | Variabel | Range Asli | Distribusi | Outlier? | Metode Normalisasi | Alasan |
 |----------|-----------|-----------|----------|-------------------|--------|
-| *Contoh: response_time* | *0.1 – 45.2s* | *Right-skewed* | *Ya (45.2s)* | *Robust scaling* | *Ada outlier, perlu robust* || *Contoh: accuracy_score* | *0.72 – 0.95* | *Normal, narrow* | *Tidak* | *Tidak perlu* | *Sudah dalam [0,1], metode berbasis distance tidak digunakan* || | | | | | |
-| | | | | | |
+| Durasi penggunaan TikTok | 0–360 menit | Tidak normal (right-skewed) | Ada | Tidak dilakukan | Data sudah menggunakan satuan menit yang seragam. Analisis yang digunakan adalah korelasi Spearman, sehingga tetap dapat mengolah data yang tidak berdistribusi normal tanpa perlu mengubah skala nilainya. | 
+| Skor fokus belajar | 1–10 | Normal | Tidak ada | Tidak dilakukan |Nilai sudah berada pada rentang skala yang baku sehingga tidak memerlukan penyesuaian tambahan. |
+
 
 **Apakah normalisasi diperlukan?** [ ] Ya / [ ] Tidak
 **Justifikasi:**
-> ___________________________________________________
+> Normalisasi tidak dilakukan karena penelitian ini menggunakan analisis korelasi untuk melihat hubungan antara durasi penggunaan TikTok dan tingkat fokus belajar. Kedua variabel telah berbentuk data numerik dengan satuan yang jelas sehingga dapat langsung dianalisis. Berbeda dengan algoritma machine learning yang berbasis perhitungan jarak (distance-based algorithm), analisis korelasi tidak mensyaratkan normalisasi. Apabila data tetap dinormalisasi, terdapat kemungkinan nilai asli hasil pengamatan berubah sehingga karakteristik data asli lapangan akan terdistorsi dan kehilangan variabilitas alaminya.
 
 **Leakage check:**
-- [ ] Parameter dihitung dari training set saja
-- [ ] Normalisasi diterapkan setelah train-test split
+- [X] Tidak relevan karena penelitian ini tidak menggunakan model prediksi maupun pembagian data latih dan data uji.
+- [X] Seluruh proses prapengolahan dilakukan pada keseluruhan data karena analisis yang digunakan bersifat statistik konvensional.
 
 ---
 
@@ -140,16 +139,15 @@ Buat ringkasan preprocessing lengkap — dokumentasi yang cukup bagi orang lain 
 ```
 PREPROCESSING SUMMARY
 
-1. Dataset: ____________________
-2. Data awal: ____ records, ____ features
+1. Dataset: yang digunakan adalah dataset survei komparatif mengenai durasi penggunaan TikTok dan tingkat fokus belajar mahasiswa Universitas Putra Bangsa.
+2. Data awal: Terdiri dari 40 responden dengan tiga variabel utama, yaitu skor fokus belajar, estimasi durasi penggunaan TikTok berdasarkan ingatan responden, dan durasi penggunaan berdasarkan log aktivitas perangkat.
 3. Cleaning:
-   - Missing values: ____ kasus, metode: ____
-   - Duplikat: ____ kasus, tindakan: ____
-   - Error: ____ kasus, tindakan: ____
-4. Transformation: ____________________
-5. Normalisasi: ____ (metode), parameter dari ____
-6. Data akhir: ____ records, ____ features
-7. Leakage check: [ ] Lulus / [ ] Ada masalah
+   - Missing values:Tidak ditemukan missing value karena seluruh pertanyaan pada Google Form bersifat wajib diisi.
+   - Duplikat: Tidak ditemukan data duplikat karena setiap respon dibatasi menggunakan satu akun Google.Ditemukan tiga data dengan format penulisan yang tidak seragam, kemudian disesuaikan menjadi angka dalam satuan menit agar konsisten dengan data lainnya
+4. Transformation: dilakukan dengan mengubah data yang semula berbentuk teks menjadi nilai numerik (integer) agar siap dianalisis.
+5. Normalisasi: tidak dilakukan karena data sudah sesuai dengan kebutuhan analisis statistik yang digunakan dan tetap dipertahankan dalam bentuk nilai aslinya (raw data).
+6. Data akhir:tetap berjumlah 40 responden dengan tiga variabel utama yang siap digunakan pada tahap analisis.
+7. Leakage check: dinyatakan lolos karena penelitian ini menggunakan pendekatan statistik konvensional dan tidak melibatkan proses pelatihan model maupun pembagian dataset.
 ```
 
 ---
@@ -158,5 +156,6 @@ PREPROCESSING SUMMARY
 
 > Apakah Anda pernah melakukan normalisasi "karena biasa dilakukan" tanpa mempertimbangkan apakah benar-benar diperlukan? Apa risiko over-preprocessing?
 
-> ___________________________________________________
-> ___________________________________________________
+> Ya, saya pernah mengalaminya ketika mengerjakan praktikum pada mata kuliah dasar. Saat itu saya terbiasa melakukan normalisasi hanya karena mengikuti contoh dari berbagai tutorial, tanpa mempertimbangkan apakah langkah tersebut memang diperlukan untuk jenis analisis yang digunakan. Setelah mempelajari lebih lanjut, saya menyadari bahwa setiap metode analisis memiliki kebutuhan yang berbeda.
+
+> Melakukan over-preprocessing dapat menimbulkan beberapa dampak negatif. Data asli yang diperoleh dari lapangan bisa kehilangan karakteristik alaminya, penyebaran data menjadi berubah, dan variasi yang sebenarnya penting justru berkurang. Akibatnya, hasil analisis statistik berpotensi kurang akurat dan tidak lagi mencerminkan kondisi nyata yang dialami oleh responden. Oleh karena itu, setiap tahapan prapengolahan data sebaiknya dilakukan berdasarkan kebutuhan penelitian, bukan sekadar mengikuti kebiasaan atau contoh yang ada.
