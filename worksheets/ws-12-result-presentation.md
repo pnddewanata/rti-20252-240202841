@@ -94,15 +94,15 @@ Buat tabel hasil eksperimen Anda (boleh dengan data simulasi jika belum punya da
 
 | Skenario | Metrik 1 (mean ± std) | Metrik 2 (mean ± std) | n |
 |----------|----------------------|----------------------|---|
-| *Contoh: BERT-base* | *88.4 ± 1.2%* | *45.2 ± 3.1 min* | *10* |
-| | | | |
-| | | | |
+| Kondisi B (Log Riil Perangkat) | 168.0 ± 58.4 Menit | 6.2 ± 1.4 | 40 |
+| Kondisi A (Estimasi Subjektif) |54.5 ± 25.2 Menit | 6.2 ± 1.4 | 40 |
+
 
 **Checklist tabel:**
-- [ ] Self-contained (judul jelas, satuan ada, N tercantum)
-- [ ] Mean ± std (bukan single number)
-- [ ] Diurutkan berdasarkan metrik utama
-- [ ] Format konsisten di semua baris
+- [X] Self-contained (judul jelas, satuan ada, N tercantum)
+- [X] Mean ± std (bukan single number)
+- [X] Diurutkan berdasarkan metrik utama
+- [X] Format konsisten di semua baris
 
 ---
 
@@ -112,9 +112,9 @@ Rencanakan 2-3 grafik untuk menyajikan data dari Latihan 1. Setiap grafik = satu
 
 | # | Jenis Grafik | Pesan | Data yang Digunakan |
 |---|-------------|-------|---------------------|
-| 1 | *Contoh: Bar chart + error bar* | *Perbandingan accuracy antar 3 model* | *Mean accuracy ± std* |
-| 2 | *Box plot* | *Distribusi F1 per model* | *Semua run F1* |
-| 3 | *Scatter plot* | *Trade-off accuracy vs training time* | *Mean accuracy vs mean time* |
+| 1 | Scatter Plot | Memperlihatkan bahwa sebaran titik nilai fokus belajar coding mahasiswa bergerak turun seiring makin besarnya angka menit durasi dari sistem HP. | Sumbu X: Data Angka Asli HP, Sumbu Y: Data Nilai Fokus Belajar |
+| 2 | Grouped Bar Chart | Memperlihatkan jurang perbedaan berupa grafik balok tebakan mahasiswa yang jauh lebih pendek dibanding grafik balok angka riil dari sistem HP. | Nilai rata-rata (Mean) serta angka simpangan (Standard Deviasi) dari Kondisi A dan B. |
+
 
 ---
 
@@ -126,14 +126,14 @@ Evaluasi visualisasi berikut untuk bias (skenario dari contoh):
 
 | Pertanyaan | Jawaban |
 |-----------|---------|
-| Apakah Y-axis menyesatkan? | *Contoh: Ya — A terlihat 2× B padahal beda 0.4%* |
-| Apakah error bar ditampilkan? | |
-| Apakah semua kondisi ditampilkan? | |
-| Apa solusinya? | |
+| Apakah Y-axis menyesatkan? | Ya. Karena angka grafik sumbu Y dipotong mulai dari 90%, balok Metode A jadi kelihatan seolah-olah 2 kali lipat lebih tinggi dari Metode B. Padahal selisih aslinya sangat kecil, cuma beda 0.4%. |
+| Apakah error bar ditampilkan? | Tidak. Grafik contoh tidak memakai garis batas ketidakpastian (error bar), sehingga menyembunyikan naik-turunnya sebaran variasi data yang asli. |
+| Apakah semua kondisi ditampilkan? | Ya. Nama kedua metode tetap ditulis dan ditampilkan, tapi cara membuat skala grafiknya tidak adil dan tidak jujur. |
+| Apa solusinya? | Angka sumbu Y grafiknya harus dikembalikan mulai dari angka 0% supaya tinggi baloknya jujur sesuai selisih asli, serta wajib ditambahkan garis error bar di atas baloknya. |
 
 **Evaluasi grafik Anda sendiri dari Latihan 2:**
-- [ ] Semua bias check lulus
-- [ ] Ada yang perlu diperbaiki: ____
+- [X] Semua bias check lulus
+- [X] Ada yang perlu diperbaiki: Tidak ada. Angka grafik untuk durasi menit dipastikan akan selalu mulai tegak lurus dari angka 0 tanpa dipotong-potong, supaya datanya jujur di mata dosen penguji.
 
 ---
 
@@ -141,5 +141,7 @@ Evaluasi visualisasi berikut untuk bias (skenario dari contoh):
 
 > Mengapa tabel dan grafik keduanya diperlukan — tidak cukup salah satu saja? Pernahkah Anda membuat grafik yang (tanpa sengaja) menyesatkan?
 
-> ___________________________________________________
-> ___________________________________________________
+> Mengapa Keduanya Diperlukan:
+Karena keduanya punya fungsi yang saling melengkapi. Tabel sangat bagus untuk menampilkan angka-angka secara tepat, detail, dan teliti yang kita butuhkan untuk membuktikan kebenaran data. Tapi, mata manusia pasti pusing kalau cuma melihat tumpukan angka di tabel. Makanya kita butuh grafik (seperti grafik titik-titik Scatter Plot) untuk mengubah angka rumit tersebut menjadi bentuk gambar, sehingga dosen penguji bisa langsung paham ke mana arah hubungan data kita hanya dalam sekali lihat. 
+> Pengalaman Mengenai Grafik Menyesatkan:
+Ya, dulu saya pernah tidak sengaja membuat grafik garis yang jarak angka sumbunya diatur otomatis oleh komputer, sehingga garisnya kelihatan menanjak sangat tajam. Hal itu membuat orang salah paham dikira ada lonjakan yang sangat heboh, padahal aslinya perubahannya biasa saja. Sejak saat itu, saya sadar bahwa angka sumbu grafik harus diatur dari nol agar hasilnya jujur dan objektif.
